@@ -1,0 +1,144 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Serializable]
+public class BaseObject 
+{
+    public int currentLevel;
+    public int maximumLevel;
+    public const int prisePerLevel = 1500;
+    public int currentPrise;
+
+    public void SetDefault(int maxLVL) 
+    {
+        currentLevel = 1;
+        maximumLevel = maxLVL;
+        UpdateCurrentPrise();
+    }
+
+    public void SetCustom(int curLVL, int maxLVL) 
+    {
+        currentLevel = curLVL;
+        maximumLevel = maxLVL;
+        UpdateCurrentPrise();
+    }
+
+    public void UpdateCurrentPrise() 
+    {
+        currentPrise = currentLevel * prisePerLevel;
+    }
+
+    public string GetCurrentPriseString()
+    {
+        if (GetCurrentPrise() < 4)
+            return "MAX";
+        else 
+            return GetCurrentPrise().ToString();
+    }
+
+    public int GetCurrentPrise() 
+    {
+        if (currentLevel < maximumLevel)
+            return currentPrise;
+        else 
+            return 0;
+    }
+
+    public int AddLevel() 
+    {
+        int prise = currentPrise;
+        currentLevel++;
+        UpdateCurrentPrise();
+        return prise;
+    }
+
+    public bool GetCanBuying(int value) 
+    {
+        if (currentLevel < maximumLevel)
+            return value >= currentPrise;
+        else
+            return false;
+    }
+
+    public string GetCurrentLevel() 
+    {
+        return currentLevel.ToString();
+    }
+}
+
+[System.Serializable]
+public class DroneLevel 
+{
+    public BaseObject moving = new BaseObject();
+    public BaseObject battery = new BaseObject();
+    public BaseObject shoot = new BaseObject();
+    public BaseObject zoom = new BaseObject();
+}
+
+public class GameController : MonoBehaviour
+{
+    public GameObject rocket;
+    public DroneLevel dl;
+    public static GameController Instance;
+    public Transform parent;
+    private int piggydog;
+    private bool canShoot = true;
+    // Start is called before the first frame update
+    void Awake()
+    {
+        Instance = this;
+    }
+
+    public float GetShootCountdown() 
+    {
+        float cd = 5f - 0.2f * dl.shoot.currentLevel;
+        return cd;
+    }
+
+    private void Start()
+    {
+        dl = JsonUtility.FromJson<DroneLevel>(PlayerPrefs.GetString("Dl"));
+        UIController.Instance.RefreshCounter(piggydog);
+    }
+
+    public void Shoot()
+    {
+        if (canShoot)
+        {
+            Instantiate(rocket, CameraController.Instance.target.position, Quaternion.Euler(rocket.transform.eulerAngles));
+            StartCoroutine(UIController.Instance.UpdateShootButton(0));
+            canShoot = false;
+        }
+    }
+
+    public IEnumerator Energy(float value) 
+    {
+        yield return new WaitForSeconds(0.1f);
+        value += 0.1f;
+        UIController.Instance.UpdateEnergy(GetBatteryState(value));
+        //Debug.Log(GetBatteryState(value));
+        if (GetBatteryState(value) < 1)
+            StartCoroutine(Energy(value));
+        else
+            UIController.Instance.Restart();
+    }
+
+    public float GetBatteryState(float value)
+    {
+        float bat = 0;
+        bat = value / (30 + 5 * dl.battery.currentLevel);
+        return bat;
+    }
+
+    public void CanShoot() 
+    {
+        canShoot = true;
+    }
+    public void AddPiggydog(int value) 
+    {
+        piggydog += value;
+        UIController.Instance.RefreshCounter(piggydog);
+        PlayerPrefs.SetInt("Score", piggydog);
+    }
+}

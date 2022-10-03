@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Rusnya.unity
-    guid: 72dba366aadcb3a4e82020f4bf7f9d72
+    path: Assets/DronMenuStartScene.unity
+    guid: dd2d0b66be756fd419b14854c70b3baf
+  - enabled: 1
+    path: Assets/Scenes/Dron.unity
+    guid: 324e101906f8c8549b49172102ef4c94
   m_configObjects: {}
