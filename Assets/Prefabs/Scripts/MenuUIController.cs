@@ -75,6 +75,7 @@ public class MenuUIController : MonoBehaviour
 
     public void StartGame() 
     {
+        MenuController.Instance.SaveDroneSettings();
         StateObject(loadingDisplay, true);
         Application.LoadLevel(1);
     }

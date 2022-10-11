@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
 
     IEnumerator Starter() 
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.15f);
         loadingDisplay.SetActive(false);
         StartCoroutine(GameController.Instance.Energy(0));
     }
@@ -47,27 +47,18 @@ public class UIController : MonoBehaviour
 
     public void Restart() 
     {
+        GameController.Instance.SaveKills();
         loadingDisplay.SetActive(true);
         Application.LoadLevel(0);
     }
 
     public void RefreshCounter(int value) 
     {
-        counter.text = $"Ворогів вбито : {value}";
-    }
-
-    public void RefreshEnergy(int value) 
-    {
-        
-    }
-
-    public void RefreshShoot() 
-    {
-        
+        counter.text = $"{LocalizationController.Instance.GetLanguageText("rusnya")} : {value}";
     }
 
     void Update()
     {
-        Camera.main.fieldOfView = 60 - 30 * zoom.value;
+        Camera.main.fieldOfView = 60 - GameController.Instance.GetZoomLevel() * zoom.value;
     }
 }

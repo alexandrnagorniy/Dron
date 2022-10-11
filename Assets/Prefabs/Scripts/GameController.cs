@@ -82,12 +82,17 @@ public class GameController : MonoBehaviour
     public DroneLevel dl;
     public static GameController Instance;
     public Transform parent;
-    private int piggydog;
+    private int points;
     private bool canShoot = true;
     // Start is called before the first frame update
     void Awake()
     {
         Instance = this;
+    }
+
+    public void SaveKills() 
+    {
+        PlayerPrefs.SetInt("Kills", points);
     }
 
     public float GetShootCountdown() 
@@ -99,7 +104,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         dl = JsonUtility.FromJson<DroneLevel>(PlayerPrefs.GetString("Dl"));
-        UIController.Instance.RefreshCounter(piggydog);
+        UIController.Instance.RefreshCounter(points);
     }
 
     public void Shoot()
@@ -117,7 +122,6 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         value += 0.1f;
         UIController.Instance.UpdateEnergy(GetBatteryState(value));
-        //Debug.Log(GetBatteryState(value));
         if (GetBatteryState(value) < 1)
             StartCoroutine(Energy(value));
         else
@@ -131,14 +135,26 @@ public class GameController : MonoBehaviour
         return bat;
     }
 
+    public float GetMoveLevel() 
+    {
+        float move = 0.1f * dl.moving.currentLevel;
+        return move;
+    }
+
+    public float GetZoomLevel() 
+    {
+        float zoom = 30 * dl.zoom.currentLevel;
+        return zoom;
+    }
+
     public void CanShoot() 
     {
         canShoot = true;
     }
     public void AddPiggydog(int value) 
     {
-        piggydog += value;
-        UIController.Instance.RefreshCounter(piggydog);
-        PlayerPrefs.SetInt("Score", piggydog);
+        points += value;
+        UIController.Instance.RefreshCounter(points);
+        PlayerPrefs.SetInt("Score", points);
     }
 }

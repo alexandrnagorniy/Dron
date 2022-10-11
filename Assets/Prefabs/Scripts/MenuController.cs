@@ -5,11 +5,18 @@ using UnityEngine.UI;
 //
 public class MenuController : MonoBehaviour
 {
+    public static MenuController Instance;
+
     public int money;
     public int maxKills;
     public int currentKills;
 
     public DroneLevel dl;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -19,6 +26,12 @@ public class MenuController : MonoBehaviour
             maxKills = currentKills;
             PlayfabController.Instance.UpdateLeaderboard(maxKills);
         }
+    }
+
+    public void SaveDroneSettings() 
+    {
+        string json = JsonUtility.ToJson(dl);
+        PlayerPrefs.SetString("Dl", json);
     }
 
     void LoadData() 
@@ -52,7 +65,8 @@ public class MenuController : MonoBehaviour
             PlayerPrefs.SetInt("Max", maxKills);
         }
 
-        money = savedMoney + currentKills * 10;
+        money = savedMoney + (currentKills * 10);
+        PlayerPrefs.SetInt("Money", money);
         MenuUIController.Instance.SetMoneyText(money);
         PlayerPrefs.DeleteKey("Kills");
 
@@ -62,13 +76,13 @@ public class MenuController : MonoBehaviour
         MenuUIController.Instance.zoom.UpdateUIParts(dl.zoom.GetCurrentLevel(), dl.zoom.GetCurrentPrise().ToString());
     }
 
-
-
     public void AddingLevel(UpdateUI ui, BaseObject baseObject) 
     {
         money -= baseObject.GetCurrentPrise();
         baseObject.AddLevel();
         ui.UpdateUIParts(baseObject.GetCurrentLevel(), baseObject.GetCurrentPriseString());
+        PlayerPrefs.SetInt("Money", money);
+        SaveDroneSettings();
     }
 
     public void AddBatteryLevel() 

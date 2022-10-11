@@ -23,6 +23,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.up * moveJoystick.Vertical + Vector3.right * moveJoystick.Horizontal);
+        transform.Translate(moveJoystick.Vertical * (Vector3.up + Vector3.up * GameController.Instance.GetMoveLevel()) +
+           moveJoystick.Horizontal * (Vector3.right + Vector3.right * GameController.Instance.GetMoveLevel()));
     }
 }
