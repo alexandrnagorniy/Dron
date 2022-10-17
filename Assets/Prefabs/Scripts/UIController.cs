@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
-{                                                                                                           
+{
     public static UIController Instance;
 
     public Joystick moveJoystick;
 
+    public Text endCounterText;
+    public GameObject endDisplay;
     public GameObject loadingDisplay;
     public Text counter;
     public Image shootButton;
@@ -19,6 +21,18 @@ public class UIController : MonoBehaviour
     {
         Instance = this;
         StartCoroutine(Starter());
+    }
+
+    public void ShowEndDisplay(int value) 
+    {
+        endCounterText.text = $"{LocalizationController.Instance.GetLanguageText("rusnya")}:{value}={value * 10}$";
+        endDisplay.SetActive(true);
+    }
+
+
+    void TestFunc() 
+    {
+        Debug.Log("Test");
     }
 
     IEnumerator Starter() 

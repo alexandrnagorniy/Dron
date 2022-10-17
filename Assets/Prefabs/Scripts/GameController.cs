@@ -125,7 +125,7 @@ public class GameController : MonoBehaviour
         if (GetBatteryState(value) < 1)
             StartCoroutine(Energy(value));
         else
-            UIController.Instance.Restart();
+            UIController.Instance.ShowEndDisplay(points);
     }
 
     public float GetBatteryState(float value)
