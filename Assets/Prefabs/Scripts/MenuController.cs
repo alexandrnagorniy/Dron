@@ -81,6 +81,7 @@ public class MenuController : MonoBehaviour
         money -= baseObject.GetCurrentPrise();
         baseObject.AddLevel();
         ui.UpdateUIParts(baseObject.GetCurrentLevel(), baseObject.GetCurrentPriseString());
+        MenuUIController.Instance.SetMoneyText(money);
         PlayerPrefs.SetInt("Money", money);
         SaveDroneSettings();
     }

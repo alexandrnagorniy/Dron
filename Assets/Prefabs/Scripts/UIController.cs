@@ -29,12 +29,6 @@ public class UIController : MonoBehaviour
         endDisplay.SetActive(true);
     }
 
-
-    void TestFunc() 
-    {
-        Debug.Log("Test");
-    }
-
     IEnumerator Starter() 
     {
         yield return new WaitForSeconds(0.15f);

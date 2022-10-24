@@ -48,13 +48,10 @@ public class PlayfabController : MonoBehaviour
         }
         else
         {
-
-            MenuUIController.Instance.StateObject(MenuUIController.Instance.moneyDisplay, true);
             MenuUIController.Instance.StateObject(MenuUIController.Instance.defaultDisplay, true);
             MenuUIController.Instance.SetNameText(name);
         }
         MenuUIController.Instance.StateObject(MenuUIController.Instance.loadingDisplay, false);
-        //UpdateLeaderboard();
     }
 
     public void UpdatePlayerName(string value) 

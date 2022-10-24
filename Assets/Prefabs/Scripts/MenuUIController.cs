@@ -6,6 +6,11 @@ using UnityEngine.UI;
 [System.Serializable]
 public class UpdateUI 
 {
+    public string name;
+    public Text nameText;
+    public string description;
+    public Text descriptionText;
+
     public Text level;
     public Text prise;
 
@@ -19,16 +24,18 @@ public class UpdateUI
 public class MenuUIController : MonoBehaviour
 {
     public static MenuUIController Instance;
+    [Header("Displays")]
+    public GameObject loadingDisplay;//-
+    public GameObject nameDisplay;//-
+    public GameObject defaultDisplay;//+
+    public GameObject upgradeDisplay;//+-
+    public GameObject upgradePartDisplay;
+    public GameObject settingsDisplay;
 
-    public GameObject loadingDisplay;
-    public GameObject nameDisplay;
-    public GameObject defaultDisplay;
-    public GameObject upgradeDisplay;
-    public GameObject moneyDisplay;
     [Header("")]
-    public InputField nameField;
-    public Text nameText;
-    public Text moneyText;
+    public InputField nameField;//++
+    public Text nameText;//+
+    public Text moneyText;//+
     [Header("")]
     public UpdateUI moving;
     public UpdateUI battery;
@@ -46,16 +53,35 @@ public class MenuUIController : MonoBehaviour
         _go.SetActive(value);
     }
 
+    public void StateDoubleObject(GameObject first, bool firstValue, GameObject second, bool secondValue) 
+    {
+        first.SetActive(firstValue);
+        second.SetActive(secondValue);
+    }
+
+    public void StateSettings(bool state) 
+    {
+        settingsDisplay.SetActive(state);
+    }
+
+    public void ShowUpgradePartDisplay() 
+    {
+        StateDoubleObject(upgradeDisplay, false, upgradePartDisplay, true);
+    }
+
+    public void HideUpgradePartDisplay()
+    {
+        StateDoubleObject(upgradeDisplay, true, upgradePartDisplay, false);
+    }
+
     public void ShowUpgradeDisplay() 
     {
-        StateObject(defaultDisplay, false);
-        upgradeDisplay.SetActive(true);
+        StateDoubleObject(upgradeDisplay, true, defaultDisplay, false);
     }
 
     public void HideUpgradeDisplay() 
     {
-        StateObject(defaultDisplay, true);
-        upgradeDisplay.SetActive(false);
+        StateDoubleObject(defaultDisplay, true, upgradeDisplay, false);
     }
 
     public void SetNameText(string value) 
