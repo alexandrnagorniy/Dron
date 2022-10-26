@@ -76,7 +76,7 @@ public class MenuController : MonoBehaviour
         MenuUIController.Instance.zoom.UpdateUIParts(dl.zoom.GetCurrentLevel(), dl.zoom.GetCurrentPrise().ToString());
     }
 
-    public void AddingLevel(UpdateUI ui, BaseObject baseObject) 
+    public void AddingLevel(UpdateUIInfo ui, BaseObject baseObject) 
     {
         money -= baseObject.GetCurrentPrise();
         baseObject.AddLevel();

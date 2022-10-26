@@ -4,20 +4,30 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public class UpdateUI 
+public class UpdateUIInfo
 {
     public string name;
     public Text nameText;
     public string description;
     public Text descriptionText;
-
+    public Image button;
     public Text level;
     public Text prise;
 
-    public void UpdateUIParts (string _level, string _prise)
+    public void UpdateUIParts(string _level, string _prise)
     {
         level.text = _level;
         prise.text = _prise;
+    }
+
+    public void ShowButton()
+    {
+        button.color = Color.green;
+    }
+
+    public void HideButton() 
+    {
+        button.color = Color.white;
     }
 }
 
@@ -29,18 +39,20 @@ public class MenuUIController : MonoBehaviour
     public GameObject nameDisplay;//-
     public GameObject defaultDisplay;//+
     public GameObject upgradeDisplay;//+-
-    public GameObject upgradePartDisplay;
     public GameObject settingsDisplay;
+
+    [Header("UpgradeMenu")]
+    public Text topText;
 
     [Header("")]
     public InputField nameField;//++
     public Text nameText;//+
     public Text moneyText;//+
     [Header("")]
-    public UpdateUI moving;
-    public UpdateUI battery;
-    public UpdateUI shoot;
-    public UpdateUI zoom;
+    public UpdateUIInfo moving;
+    public UpdateUIInfo battery;
+    public UpdateUIInfo shoot;
+    public UpdateUIInfo zoom;
 
     private void Awake()
     {
@@ -62,16 +74,6 @@ public class MenuUIController : MonoBehaviour
     public void StateSettings(bool state) 
     {
         settingsDisplay.SetActive(state);
-    }
-
-    public void ShowUpgradePartDisplay() 
-    {
-        StateDoubleObject(upgradeDisplay, false, upgradePartDisplay, true);
-    }
-
-    public void HideUpgradePartDisplay()
-    {
-        StateDoubleObject(upgradeDisplay, true, upgradePartDisplay, false);
     }
 
     public void ShowUpgradeDisplay() 

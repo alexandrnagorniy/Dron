@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [System.Serializable]
-public class TargetContainer
+public class TargetPositionsContainer
 {
     public Transform targetTransform;
     public Vector3 cameraPosition;
@@ -18,25 +18,37 @@ public class TargetContainer
     }
 }
 
-
 public class MenuDrone : MonoBehaviour
 {
     public GameObject lockGO;
 
-    public TargetContainer[] containers;
+    public TargetPositionsContainer[] containers;
 
-    public TargetContainer targetContainer;
+    public TargetPositionsContainer targetContainer;
 
     public Outline[] manipulators;
     public Outline[] top;
     public Outline battery;
     public Outline cam;
+    public Outline myOutine;
+
+    private Outline[] currentOutlines;
+    private UpdateUIInfo currentInfo;
 
     private void Awake()
     {
         targetContainer = containers[0];
         lockGO = new GameObject();
         lockGO.transform.position = targetContainer.GetTargetPosition();
+        //EnableOutline(GetOut(myOutine), new UpdateUIInfo());
+        ChangeOutline(true, false, false, false, false);
+    }
+
+    Outline[] GetOut(Outline outline) 
+    {
+        Outline[] tmp = new Outline[1];
+        tmp[0] = outline;
+        return tmp;
     }
 
     IEnumerator OutlineWife()
@@ -70,26 +82,54 @@ public class MenuDrone : MonoBehaviour
 
     public void ShowZoom()
     {
+        //EnableOutline(GetOut(cam), MenuUIController.Instance.zoom);
         targetContainer = containers[3];
         ChangeOutline(false, false, false, true, false);
     }
 
     public void ShowBattery()
     {
+        //EnableOutline(GetOut(battery), MenuUIController.Instance.battery);
         targetContainer = containers[2];
         ChangeOutline(false, false, false, false, true);
     }
 
     public void ShowTop()
     {
+        //EnableOutline(top, MenuUIController.Instance.moving);
         targetContainer = containers[4];
         ChangeOutline(false, false, true, false, false);
     }
 
     public void ShowManipulators() 
     {
+        //EnableOutline(manipulators, MenuUIController.Instance.shoot);
         targetContainer = containers[5];
         ChangeOutline(false, true, false, false, false);
+    }
+
+    public void EnableOutline(Outline[] outlines, UpdateUIInfo info) 
+    {
+        if (currentInfo.button != null)
+            currentInfo.HideButton();
+
+        if(currentOutlines.Length > 0 || currentOutlines != null)
+            foreach (var item in currentOutlines)
+            {
+                item.enabled = false;
+            }
+
+        currentOutlines = outlines;
+        currentInfo = info;
+
+        if(currentOutlines.Length > 0)
+            foreach (var item in currentOutlines)
+            {
+                item.enabled = true;
+            }
+
+        if(currentInfo.button != null)
+            currentInfo.ShowButton();
     }
 
     public void ChangeOutline(bool _myOut, bool _manipulators, bool _top, bool _camera, bool _battery) 
@@ -125,7 +165,8 @@ public class MenuDrone : MonoBehaviour
     { 
         if (targetContainer == containers[0])
         {
-            ShowBaseUpgrade();
+            MenuUIController.Instance.ShowUpgradeDisplay();
+            ShowBattery();
         }
     }
 }
