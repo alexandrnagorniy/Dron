@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/DronMenuStartScene.unity
+    path: Assets/Scenes/MyScenes/DronMenuStartScene.unity
     guid: dd2d0b66be756fd419b14854c70b3baf
   - enabled: 1
-    path: Assets/Scenes/Dron.unity
+    path: Assets/Scenes/MyScenes/Dron.unity
     guid: 324e101906f8c8549b49172102ef4c94
+  - enabled: 1
+    path: Assets/Scenes/MyScenes/Levels/SearchLevels/Village_1/Village_1.unity
+    guid: eb6b9cd3e5127da47856e0ab651c3595
   m_configObjects: {}

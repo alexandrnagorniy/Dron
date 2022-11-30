@@ -61,9 +61,15 @@ public class MenuUIController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        StateObject(loadingDisplay, true);
+        StartCoroutine(Starting());
     }
 
+    IEnumerator Starting() 
+    {
+        StateObject(loadingDisplay, true);
+        yield return new WaitForSeconds(0.5f);
+        StateObject(loadingDisplay, false);
+    }
     public void StateObject(GameObject _go, bool value) 
     {
         _go.SetActive(value);
@@ -105,10 +111,10 @@ public class MenuUIController : MonoBehaviour
         moneyText.text = $"$ {value}";
     }
 
-    public void StartGame() 
+    public void StartGame(int value) 
     {
         MenuController.Instance.SaveDroneSettings();
         StateObject(loadingDisplay, true);
-        Application.LoadLevel(1);
+        Application.LoadLevel(value);
     }
 }

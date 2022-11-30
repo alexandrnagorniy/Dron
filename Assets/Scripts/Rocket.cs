@@ -29,8 +29,10 @@ public class Rocket : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         StartCoroutine(Sound());
+        GetComponent<CapsuleCollider>().enabled = false;
         if (!shooting)
         {
+            
             if (other.tag == "Verticle")
                 other.GetComponent<VerticleController>().Destroying();
             shooting = true;

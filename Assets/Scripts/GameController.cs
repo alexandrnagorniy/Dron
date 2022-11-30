@@ -111,7 +111,7 @@ public class GameController : MonoBehaviour
     {
         if (canShoot)
         {
-            Instantiate(rocket, CameraController.Instance.target.position, Quaternion.Euler(rocket.transform.eulerAngles));
+            Instantiate(rocket, CameraController.Instance.target.position + Vector3.up * 10, Quaternion.Euler(rocket.transform.eulerAngles));
             StartCoroutine(UIController.Instance.UpdateShootButton(0));
             canShoot = false;
         }

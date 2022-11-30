@@ -77,21 +77,21 @@ public class MenuDrone : MonoBehaviour
     {
         
         EnableOutline(manipulators, MenuUIController.Instance.shoot);
-        MenuUIController.Instance.ShowUpgradeDisplay();
+        //MenuUIController.Instance.ShowUpgradeDisplay();
     }
 
     public void HideBaseUpgrade() 
     {
         
         
-        MenuUIController.Instance.HideUpgradeDisplay();
+        //MenuUIController.Instance.HideUpgradeDisplay();
         EnableOutline(GetOut(myOutine), new UpdateUIInfo());
     }
 
     public void OnMouseDown()
     { 
         
-            MenuUIController.Instance.ShowUpgradeDisplay();
+            //MenuUIController.Instance.ShowUpgradeDisplay();
             ShowBattery();
         
     }

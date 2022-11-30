@@ -8,31 +8,90 @@ public class UIController : MonoBehaviour
     public static UIController Instance;
 
     public Joystick moveJoystick;
+    public Joystick rotateJoystick;
 
-    public Text endCounterText;
-    public GameObject endDisplay;
+    [Header("All Canvas")]
     public GameObject loadingDisplay;
+    public GameObject startingDisplay;
+    public GameObject pauseDisplay;
+    public GameObject endDisplay;
+
+    [Header("Starting display")]
+    public Text timerText;
+
+    [Header("Game display")]
+    public Transform minimap;
     public Text counter;
     public Image shootButton;
     public Slider energyBar;
     public Scrollbar zoom;
+
+    [Header("End display")]
+    public GameObject ADSButton;
+    public Text moneyCounterText;
+    public Text detailsCounterText;
+    
     // Start is called before the first frame update
     void Awake()
     {
         Instance = this;
-        StartCoroutine(Starter());
+        StartCoroutine(LoadCoroutine());
     }
 
     public void ShowEndDisplay(int value) 
     {
-        endCounterText.text = $"{LocalizationController.Instance.GetLanguageText("rusnya")}:{value}={value * 10}$";
+        moneyCounterText.text = $"{LocalizationController.Instance.GetLanguageText("rusnya")}:{value}={value * 10}$";
+        detailsCounterText.text = " ";
         endDisplay.SetActive(true);
     }
 
-    IEnumerator Starter() 
+    #region loading
+    IEnumerator LoadCoroutine() 
     {
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(1.2f);
+        HideLoadingDisplay();
+    }
+
+    public void ShowLoadingDisplay() 
+    {
+        loadingDisplay.SetActive(true);
+    }
+    
+    public void HideLoadingDisplay()
+    {
+        startingDisplay.SetActive(true);
+        StartCoroutine(Starting(3));
         loadingDisplay.SetActive(false);
+
+    }
+
+    //
+    public void UpdateLoadingBar() 
+    {
+    
+    }
+    #endregion
+
+    IEnumerator Starting(int value) 
+    {
+        timerText.text = value.ToString();
+        value--;
+        yield return new WaitForSeconds(1);
+        if (value == 0)
+        {
+            startingDisplay.SetActive(false);
+            StartCoroutine(StartedLogic());
+        }
+        else 
+        {
+            StartCoroutine(Starting(value));
+        }
+    }
+
+    IEnumerator StartedLogic() 
+    {
+        startingDisplay.SetActive(false);
+        yield return new WaitForSeconds(0.15f);
         StartCoroutine(GameController.Instance.Energy(0));
     }
 
@@ -55,7 +114,15 @@ public class UIController : MonoBehaviour
 
     public void Restart() 
     {
+        Time.timeScale = 1;
         GameController.Instance.SaveKills();
+        loadingDisplay.SetActive(true);
+        Application.LoadLevel(Application.loadedLevel);
+    }
+
+    public void ToMenu() 
+    {
+        Time.timeScale = 1;
         loadingDisplay.SetActive(true);
         Application.LoadLevel(0);
     }
@@ -67,6 +134,17 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
+        minimap.rotation = Quaternion.Euler(0, 0, minimap.localEulerAngles.z + rotateJoystick.Horizontal);
+        //minimap.GetChild(0).localEulerAngles = new Vector3(0, 0, minimap.GetChild(0).localEulerAngles.z + rotateJoystick.Horizontal / 4);
         Camera.main.fieldOfView = 60 - GameController.Instance.GetZoomLevel() * zoom.value;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            PopupController.Instance.Show("test", "test message", 2);
+    }
+
+    public void Pause(bool value) 
+    {
+        Time.timeScale = System.Convert.ToInt32(!value);
+        pauseDisplay.SetActive(value);
     }
 }
