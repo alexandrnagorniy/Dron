@@ -28,9 +28,9 @@ public class GroundGenerator : MonoBehaviour
         this.enabled = false;
     }
 
-    void Update()
-    {
-        if (Vector3.Distance(CameraController.Instance.target.position, transform.position) < 150)
-            Generate();
-    }
+    //void Update()
+    //{
+    //    if (Vector3.Distance(CameraController.Instance.target.position, transform.position) < 150)
+    //        Generate();
+    //}
 }

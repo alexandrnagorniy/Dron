@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6fe0dd987f5c747a73cff4fbbb308e, type: 3}
+  m_Name: DroneObject
+  m_EditorClassIdentifier: 
+  model: {fileID: 0}
+  shootAttribute:
+    level: 0
+    countPerLevel: 0
+    currentLevel: 0
+    maximumLevel: 0
+    costPerLevel: 0
+  controlAttribute:
+    level: 0
+    countPerLevel: 0
+    currentLevel: 0
+    maximumLevel: 0
+    costPerLevel: 0
+  batteryAttribute:
+    level: 0
+    countPerLevel: 0
+    currentLevel: 0
+    maximumLevel: 0
+    costPerLevel: 0
+  zoomAttribute:
+    level: 0
+    countPerLevel: 0
+    currentLevel: 0
+    maximumLevel: 0
+    costPerLevel: 0
+  moving:
+    currentLevel: 0
+    maximumLevel: 0
+    currentPrise: 0
+  battery:
+    currentLevel: 0
+    maximumLevel: 0
+    currentPrise: 0
+  shoot:
+    currentLevel: 0
+    maximumLevel: 0
+    currentPrise: 0
+  zoom:
+    currentLevel: 0
+    maximumLevel: 0
+    currentPrise: 0

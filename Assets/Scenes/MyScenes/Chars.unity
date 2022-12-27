@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.4440221, g: 0.49316514, b: 0.5722316, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -240,6 +240,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Chr_Soldier_Male_02_Alt_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1341386074302550, guid: 686c27708b4bb8e48b8a4c79e61fb7bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4748755489260234, guid: 686c27708b4bb8e48b8a4c79e61fb7bb, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -301,6 +305,10 @@ PrefabInstance:
     - target: {fileID: 1874796586480282, guid: 9eaeaec5e951a394c8158fffa41ec36e, type: 3}
       propertyPath: m_Name
       value: SM_Chr_Soldier_Male_02_Alt_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874796586480282, guid: 9eaeaec5e951a394c8158fffa41ec36e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4422180355294120, guid: 9eaeaec5e951a394c8158fffa41ec36e, type: 3}
       propertyPath: m_RootOrder
@@ -458,7 +466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &353245433
 Transform:
   m_ObjectHideFlags: 0
@@ -469,6 +477,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 911823922}
   - {fileID: 18636406}
@@ -493,6 +502,10 @@ PrefabInstance:
     - target: {fileID: 1377427175305640, guid: 3bf6cf36dee71c84a97046177eb99524, type: 3}
       propertyPath: m_Name
       value: SM_Chr_Civilian_Male_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1377427175305640, guid: 3bf6cf36dee71c84a97046177eb99524, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4682141926438588, guid: 3bf6cf36dee71c84a97046177eb99524, type: 3}
       propertyPath: m_RootOrder
@@ -624,6 +637,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -638,6 +652,10 @@ PrefabInstance:
     - target: {fileID: 1099272165902576, guid: 74ec7df15d61a7f46aa77a894bcf7476, type: 3}
       propertyPath: m_Name
       value: SM_Chr_Insurgent_Male_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099272165902576, guid: 74ec7df15d61a7f46aa77a894bcf7476, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4851612934608156, guid: 74ec7df15d61a7f46aa77a894bcf7476, type: 3}
       propertyPath: m_RootOrder
@@ -701,6 +719,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Chr_Soldier_Male_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1775214464343450, guid: a28775a11e80de44baa17ef63cd37f4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4981732258417504, guid: a28775a11e80de44baa17ef63cd37f4b, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -762,6 +784,10 @@ PrefabInstance:
     - target: {fileID: 1447573623144628, guid: e6cd146c9ae59574984469a179329dda, type: 3}
       propertyPath: m_Name
       value: SM_Chr_Pilot_Male_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447573623144628, guid: e6cd146c9ae59574984469a179329dda, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4706252996286608, guid: e6cd146c9ae59574984469a179329dda, type: 3}
       propertyPath: m_RootOrder
@@ -935,6 +961,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Chr_Insurgent_Male_05
       objectReference: {fileID: 0}
+    - target: {fileID: 1824501089210122, guid: 473fb24bc0bd21a4ba79a7e26bc3c915, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4898127051934798, guid: 473fb24bc0bd21a4ba79a7e26bc3c915, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -996,6 +1026,10 @@ PrefabInstance:
     - target: {fileID: 1890800173700224, guid: 03a2f20bebe15b24f9de251ef3c70abd, type: 3}
       propertyPath: m_Name
       value: SM_Chr_Insurgent_Male_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890800173700224, guid: 03a2f20bebe15b24f9de251ef3c70abd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4885353996630176, guid: 03a2f20bebe15b24f9de251ef3c70abd, type: 3}
       propertyPath: m_RootOrder
@@ -1059,6 +1093,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Chr_Contractor_Male_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1938819345475948, guid: 7808f0aeae535744d839b436592d7285, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4439641322390354, guid: 7808f0aeae535744d839b436592d7285, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1121,6 +1159,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Chr_Soldier_Male_01_Alt_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1600432711309592, guid: 3b83cbe22b3a0de4b836a9b21d1bc432, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4693838071459360, guid: 3b83cbe22b3a0de4b836a9b21d1bc432, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1182,6 +1224,10 @@ PrefabInstance:
     - target: {fileID: 1635968286695696, guid: 90029427947776a4e96a6bc39fc00a85, type: 3}
       propertyPath: m_Name
       value: SM_Chr_Ghillie_Male_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1635968286695696, guid: 90029427947776a4e96a6bc39fc00a85, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4398338604810994, guid: 90029427947776a4e96a6bc39fc00a85, type: 3}
       propertyPath: m_RootOrder
@@ -1383,6 +1429,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Chr_Soldier_Male_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1005869407385184, guid: 7f745586162057b4ba599160c0885d7c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4330754933752916, guid: 7f745586162057b4ba599160c0885d7c, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -1427,6 +1477,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95813105710098806, guid: 7f745586162057b4ba599160c0885d7c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 178ea6fd11bafe147b2538d973994e60, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f745586162057b4ba599160c0885d7c, type: 3}
 --- !u!4 &945595908 stripped
@@ -1577,6 +1631,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Chr_Contractor_Male_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1245639020409412, guid: 96e947df06e21f948a8c6ad8fc919f5d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4796346557468498, guid: 96e947df06e21f948a8c6ad8fc919f5d, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1638,6 +1696,10 @@ PrefabInstance:
     - target: {fileID: 1798057794478238, guid: d5047b6b50f166b40bec1a3fafed03d1, type: 3}
       propertyPath: m_Name
       value: SM_Chr_Bombsuit_Male_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1798057794478238, guid: d5047b6b50f166b40bec1a3fafed03d1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4590083219601376, guid: d5047b6b50f166b40bec1a3fafed03d1, type: 3}
       propertyPath: m_RootOrder
@@ -1701,6 +1763,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Chr_Insurgent_Male_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1090259963271572, guid: 8f7609894c3decc46b4b580806ce2c8c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4470067215389936, guid: 8f7609894c3decc46b4b580806ce2c8c, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -1762,6 +1828,10 @@ PrefabInstance:
     - target: {fileID: 1424507673452108, guid: 2d9d9f6bc980c014c8edc9898911a4c7, type: 3}
       propertyPath: m_Name
       value: SM_Chr_Civilian_Male_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424507673452108, guid: 2d9d9f6bc980c014c8edc9898911a4c7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4333343110463434, guid: 2d9d9f6bc980c014c8edc9898911a4c7, type: 3}
       propertyPath: m_RootOrder
@@ -1903,6 +1973,7 @@ Transform:
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -1917,6 +1988,10 @@ PrefabInstance:
     - target: {fileID: 1341386074302550, guid: 1f98a0b68f1591a48a507169b6d232ad, type: 3}
       propertyPath: m_Name
       value: SM_Chr_Soldier_Male_02_Alt_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341386074302550, guid: 1f98a0b68f1591a48a507169b6d232ad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4748755489260234, guid: 1f98a0b68f1591a48a507169b6d232ad, type: 3}
       propertyPath: m_RootOrder
@@ -1979,6 +2054,10 @@ PrefabInstance:
     - target: {fileID: 1703147139604504, guid: d7e7ae8f6bdb1e34c88632c5154a5d68, type: 3}
       propertyPath: m_Name
       value: SM_Chr_Insurgent_Male_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703147139604504, guid: d7e7ae8f6bdb1e34c88632c5154a5d68, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4873994767534494, guid: d7e7ae8f6bdb1e34c88632c5154a5d68, type: 3}
       propertyPath: m_RootOrder
@@ -2046,7 +2125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1857640965
 Transform:
   m_ObjectHideFlags: 0
@@ -2057,6 +2136,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 867580289}
   - {fileID: 1888379769}
@@ -2092,6 +2172,10 @@ PrefabInstance:
     - target: {fileID: 1600432711309592, guid: 82bf002e6f0093b4486817df2ad566d1, type: 3}
       propertyPath: m_Name
       value: SM_Chr_Soldier_Male_01_Alt_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600432711309592, guid: 82bf002e6f0093b4486817df2ad566d1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4693838071459360, guid: 82bf002e6f0093b4486817df2ad566d1, type: 3}
       propertyPath: m_RootOrder
@@ -2389,6 +2473,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Chr_Soldier_Male_02_Alt_03
       objectReference: {fileID: 0}
+    - target: {fileID: 1341386074302550, guid: bf8ef63526b05c447b0cb44e4035ad06, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4748755489260234, guid: bf8ef63526b05c447b0cb44e4035ad06, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2516,6 +2604,10 @@ PrefabInstance:
     - target: {fileID: 1819310207087970, guid: c3ce97d94e57a1349b449868f4a25a14, type: 3}
       propertyPath: m_Name
       value: SM_Chr_Leader_Male_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819310207087970, guid: c3ce97d94e57a1349b449868f4a25a14, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4706442735364328, guid: c3ce97d94e57a1349b449868f4a25a14, type: 3}
       propertyPath: m_RootOrder

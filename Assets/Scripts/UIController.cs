@@ -20,6 +20,7 @@ public class UIController : MonoBehaviour
     public Text timerText;
 
     [Header("Game display")]
+    public Image warningImage;
     public Transform minimap;
     public Text counter;
     public Image shootButton;
@@ -36,6 +37,11 @@ public class UIController : MonoBehaviour
     {
         Instance = this;
         StartCoroutine(LoadCoroutine());
+    }
+
+    public void SetupWarningImage(Color color) 
+    {
+        warningImage.color = color;
     }
 
     public void ShowEndDisplay(int value) 

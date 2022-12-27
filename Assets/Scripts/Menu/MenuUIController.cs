@@ -50,13 +50,69 @@ public class MenuUIController : MonoBehaviour
     [Header("")]
     public InputField nameField;//-
     public Text nameText;//+
-    public Text moneyText;//+
 
     [Header("")]
     public UpdateUIInfo moving;
     public UpdateUIInfo battery;
     public UpdateUIInfo shoot;
     public UpdateUIInfo zoom;
+
+    [Header("Money")]
+    public Text moneyText;
+    public Animator currentMoneyAnimator;
+    public Text[] setMoneyText;
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+            SetMoney(Random.Range(100, 999999));
+        if (Input.GetKeyDown(KeyCode.M))
+            SetMoney(Random.Range(-999999, -100));
+    }
+
+    public void SetMoney(int money)
+    {
+        Text moneyText = null;
+        Animator anim = null;
+        foreach (var item in setMoneyText)
+        {
+            if (!item.gameObject.activeSelf)
+            { 
+                moneyText = item;
+                anim = moneyText.GetComponent<Animator>();
+                break;
+            }
+        }
+
+        if (money > 0)
+        {
+            moneyText.text = "+";
+            moneyText.color = Color.green;
+        }
+        else 
+        {
+            moneyText.color = Color.red;
+        }
+
+        moneyText.text += money;
+        StateObject(moneyText.gameObject, true);
+        StartCoroutine(DisableChangedMoneyText(moneyText, money));
+    }
+
+    IEnumerator DisableChangedMoneyText(Text value,int moneyValue)
+    {
+        yield return new WaitForSeconds(0.5f);
+        currentMoneyAnimator.enabled = true;
+        moneyText.color = value.color;
+        value.color = Color.white;
+        value.text = "";
+        StateObject(value.gameObject, false);
+        yield return new WaitForSeconds(0.25f);
+        MenuController.Instance.SetMoney(moneyValue);
+        yield return new WaitForSeconds(0.25f);
+        moneyText.color = Color.white;
+        currentMoneyAnimator.enabled = false;
+    }
 
     private void Awake()
     {
@@ -108,7 +164,7 @@ public class MenuUIController : MonoBehaviour
 
     public void SetMoneyText(int value) 
     {
-        moneyText.text = $"$ {value}";
+        moneyText.text = $"{value}";
     }
 
     public void StartGame(int value) 

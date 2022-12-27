@@ -13,9 +13,16 @@ public class MenuController : MonoBehaviour
 
     public DroneLevel dl;
 
+    public void SetMoney(int value) 
+    {
+        money += value;
+        MenuUIController.Instance.SetMoneyText(money);
+        PlayerPrefs.SetInt("Money", money);
+    }
     private void Awake()
     {
         Instance = this;
+        PlayerPrefs.DeleteAll();
     }
 
     void Start()
@@ -54,18 +61,21 @@ public class MenuController : MonoBehaviour
         dl.shoot.UpdateCurrentPrise();
         dl.zoom.UpdateCurrentPrise();
 
+        
+
         int savedMoney = PlayerPrefs.GetInt("Money");
+        SetMoney(savedMoney);
         int currentKills = PlayerPrefs.GetInt("Kills");
         int maxKills = PlayerPrefs.GetInt("Max");
 
-        if (currentKills > maxKills) 
+        if (currentKills > maxKills)
         {
             PlayfabController.Instance.UpdateLeaderboard(currentKills);
             maxKills = currentKills;
             PlayerPrefs.SetInt("Max", maxKills);
         }
 
-        money = savedMoney + (currentKills * 10);
+        //money = savedMoney + (currentKills * 10);
         PlayerPrefs.SetInt("Money", money);
         MenuUIController.Instance.SetMoneyText(money);
         PlayerPrefs.DeleteKey("Kills");
